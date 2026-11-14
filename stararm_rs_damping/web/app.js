@@ -319,7 +319,7 @@ async function init(){
   $('heatScale').onchange=()=>{text($('scaleMax'),$('heatScale').value+' Nm');updateForces();};
   $('showForces').onchange=()=>{Motion.show($('forceLabels'),$('showForces').checked);Motion.show($('forceLines'),$('showForces').checked);};
   initModel();
-  try{boot=await api('/api/bootstrap');token=boot.token;settings=boot.settings;if(settings.format!=='stararm-rs-unloaded-damping-v1')throw new Error('当前服务不是独立空载阻尼项目');text($('version'),'v'+boot.version+' · 8767');buildParams();setButtons();poll();}
+  try{boot=await api('/api/bootstrap');token=boot.token;settings=boot.settings;if(settings.format!=='stararm-rs-unloaded-damping-v1')throw new Error('当前服务的配置格式不匹配，请检查服务地址');text($('version'),'v'+boot.version+' · 8767');buildParams();setButtons();poll();}
   catch(error){networkFailed=true;setButtons();notice('网页初始化失败：'+error.message,'error','network');}
 }
 setInterval(()=>{if(forceFresh&&performance.now()>freshDeadline){document.body.classList.add('stale');text($('freshness'),'已过期');text($('connection'),'等待新鲜设备数据');$('led').className='led orange';renderTelemetry(latest,false);}},100);

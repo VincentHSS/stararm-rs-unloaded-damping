@@ -12,7 +12,7 @@
   <span class="head-status"><i id="led" class="led"></i><span id="connection">正在连接本地服务</span><span id="version" class="version">本地 · 8767</span></span>
 </header>
 <main>
-  <div class="toolbar"><div><p class="eyebrow">独立项目 · 固定空载阻尼</p><h1 id="pageTitle">空载阻尼工作台</h1></div><div class="actions"><span id="revision" class="tag">等待配置</span><button id="start" disabled>启动跟随</button><button id="stop" class="danger" disabled>停止运行</button></div></div>
+  <div class="toolbar"><div><p class="eyebrow">StarArm · 固定空载阻尼</p><h1 id="pageTitle">空载阻尼工作台</h1></div><div class="actions"><span id="revision" class="tag">等待配置</span><button id="start" disabled>启动跟随</button><button id="stop" class="danger" disabled>停止运行</button></div></div>
   <div id="notice" class="notice" role="status"><span id="noticeText">网页服务启动后不会自动连接机械臂；点击“启动跟随”后开始。</span><button id="dismissNotice" class="quiet" aria-label="关闭提示">×</button></div>
   <div class="metrics">
     <article><span class="metric-name">会话状态</span><b id="session">未启动</b><small id="sessionDetail">Star Arm 102 / B601 RS</small></article>
@@ -43,7 +43,7 @@
     </section>
     <section id="parameters" class="view panel params-panel" data-page="parameters" hidden>
       <div class="panel-head"><div><h2>固定空载阻尼</h2><p>功率固定，不随负载改变；运行中保存后，以“已应用”版本确认。</p></div><div class="param-actions"><span id="dirty" class="tag">已保存</span><button id="defaults" class="quiet">恢复固定阻尼默认值</button><button id="save" class="primary">保存并应用</button></div></div>
-      <div class="damping-settings"><label class="toggle-label"><input id="dampingEnabled" type="checkbox"><span><b>启用固定空载阻尼</b><small>此开关只控制固定阻尼，夹爪锁止独立工作。</small></span></label><p>各轴可填 0–1500 mW；调大允许更强阻尼，填 0 关闭该轴固定阻尼。默认七轴均为 100 mW，包含 J3。</p><div id="dampingRows" class="damping-grid"></div><p class="j7-note">J7 固定阻尼仅在夹爪锁止关闭时生效。锁止开启时，未接触和释放后均为 FREE；夹住物体时转为 HOLD，保留反向轻开的体验。</p></div>
+      <div class="damping-settings"><label class="toggle-label"><input id="dampingEnabled" type="checkbox"><span><b>启用固定空载阻尼</b><small>此开关只控制固定阻尼，夹爪锁止独立工作。</small></span></label><p>各轴可填 0–1500 mW；调大允许更强阻尼，填 0 关闭该轴固定阻尼。默认七轴均为 100 mW。</p><div id="dampingRows" class="damping-grid"></div><p class="j7-note">J7 固定阻尼仅在夹爪锁止关闭时生效。锁止开启时，未接触和释放后均为 FREE；夹住物体时转为 HOLD，保留反向轻开的体验。</p></div>
       <section class="gripper-lock-settings" aria-labelledby="gripperLockTitle"><div class="gripper-lock-controls"><label class="toggle-label"><input id="gripperLockEnabled" type="checkbox"><span><b id="gripperLockTitle">启用夹爪接触锁止</b><small>仅 J7，与固定阻尼开关独立</small></span></label><label class="gripper-lock-power">保持功率<span><input id="gripperHoldPower" type="number" min="100" max="1500" step="1" required aria-label="夹爪保持功率"><em>mW</em></span><small>100–1500 mW；保持力有限，反向张开或失物后释放。</small></label></div>
         <p>修改接触或释放参数会重置夹爪接触状态，需要重新夹取；仅修改保持功率保留当前 HOLD。其他关节固定阻尼不变。</p>
         <div class="gripper-tuning-grid">
@@ -58,7 +58,7 @@
     </section>
     <section id="logs" class="view panel" data-page="logs" hidden><div class="panel-head"><div><h2>运行日志</h2><p>当前会话的文字日志，不录制 CSV。</p></div><button id="refreshLog" class="quiet">刷新日志</button></div><pre id="log">尚无运行日志</pre></section>
   </div>
-  <footer><span>StarArm RS Unloaded Damping · 独立本地项目</span><span>关闭页面不会停止会话；停止时可能回零或卸力，请留出空间。</span></footer>
+  <footer><span>StarArm RS Unloaded Damping · 本地工作台</span><span>关闭页面不会停止会话；停止时可能回零或卸力，请留出空间。</span></footer>
 </main>
 <script type="module" src="app.js"></script>
 </body></html>

@@ -60,10 +60,10 @@ class Session:
             if not callable(getattr(self.leader.bus, method, None)):
                 raise TypeError(f"motorbridge-smart-servo API required: {method}")
         if not callable(getattr(self.leader.bus, "set_zero_confirm_samples", None)):
-            raise TypeError("Install bundled motorbridge-smart-servo 0.0.4+rsfix1 wheel "
-                            "to fix repeated rejection of valid zero angles")
+            raise TypeError("Bundled motorbridge-smart-servo set_zero_confirm_samples API required; "
+                            "build the SDK as described in vendor/README.md")
         if not hasattr(self.robot, "_skip_safe_zero_on_disconnect"):
-            raise TypeError("Follower plugin is too old; need disconnect safe_zero skip support")
+            raise TypeError("Follower plugin requires disconnect safe_zero skip support")
         for name in NAMES:
             if not callable(getattr(self.robot.motors[name], "robstride_set_active_report", None)):
                 raise TypeError(f"{name}: MotorBridge robstride_set_active_report API required")

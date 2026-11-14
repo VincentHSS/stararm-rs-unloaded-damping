@@ -1,4 +1,4 @@
-"""Settings belong only to this independent fixed-damping project."""
+"""Settings for StarArm fixed damping and gripper contact hold."""
 import copy
 from dataclasses import asdict
 import json
@@ -31,7 +31,7 @@ def validate(data):
         raise ValueError('参数字段不完整或包含未知字段')
     value = copy.deepcopy(data)
     if value['format'] != defaults()['format'] or type(value['revision']) is not int or value['revision'] < 0:
-        raise ValueError('不是本项目的参数格式，不能使用力反馈版本的 settings.json')
+        raise ValueError('参数格式无效，请使用本项目生成的 settings.json')
     Config(damping_enabled=value['damping_enabled'], joint_damping_mw=value['joint_damping_mw']).validate()
     lock = value['gripper_lock']
     if not isinstance(lock, dict) or set(lock) != set(asdict(GripperLockConfig())):

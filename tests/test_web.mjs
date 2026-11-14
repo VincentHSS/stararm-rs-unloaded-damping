@@ -159,5 +159,5 @@ context.api=async()=>({text:'test session text'});await run('loadLog()');assert.
 assert.doesNotMatch(source,/residual_nm|deadzone_nm|gripper_follow_mode|\/api\/replay|mode:'feedback'/,'the independent UI must not expose old load feedback or fast-follow controls');
 assert.match(source,/new PoseTimeline\(\)/);assert.match(source,/labelColumns\(width,height,labelWidth,labelHeight\)/);
 assert.doesNotMatch(source.match(/async function init\(\)\{[\s\S]*?\n\}/)[0],/startSession\(\)/,'opening the page must not start hardware');
-assert.match(html,/默认七轴均为 100 mW，包含 J3/);assert.match(html,/J7 固定阻尼仅在夹爪锁止关闭时生效/);assert.match(html,/未接触和释放后均为 FREE/);
+assert.match(html,/默认七轴均为 100 mW/);assert.match(html,/J7 固定阻尼仅在夹爪锁止关闭时生效/);assert.match(html,/未接触和释放后均为 FREE/);
 console.log('Unloaded damping UI: actual settings validation, all-seven 100 mW defaults, independent J7 lock, draft/default/save preservation, teleop start/stop, startup race, measured readback expiry and stale telemetry passed with mock APIs; no hardware access.');

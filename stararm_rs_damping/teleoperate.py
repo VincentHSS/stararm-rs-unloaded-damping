@@ -96,13 +96,13 @@ class UnloadedSession(Session):
 def enable_private_sdk():
     runtime = Path(__file__).resolve().parent.parent / 'vendor/runtime'
     if not (runtime / 'motorbridge_smart_servo').is_dir():
-        raise RuntimeError('本项目私有 SDK 缺失，请先构建 vendor SDK；不要替换原项目环境')
+        raise RuntimeError('项目自带 SDK 缺失，请按 vendor/README.md 构建到 vendor/runtime')
     sys.path.insert(0, str(runtime))
     sdk = importlib.import_module('motorbridge_smart_servo')
     if not Path(sdk.__file__).resolve().is_relative_to(runtime.resolve()):
         raise RuntimeError('已加载其他版本的 Smart Servo SDK，请在新进程运行本项目')
     if not callable(getattr(sdk.FashionStarServo, 'set_damping', None)):
-        raise RuntimeError('私有 SDK 缺少 opcode 0x09 set_damping 接口')
+        raise RuntimeError('项目自带 SDK 缺少 set_damping 接口，请按 vendor/README.md 重新构建')
 
 
 def check_can(config):

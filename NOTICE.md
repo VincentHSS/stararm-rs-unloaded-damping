@@ -1,10 +1,13 @@
-# 第三方来源
+# 第三方组件与许可
 
-- RS URDF 与展示 STL 来源于 Seeed Studio 的 reBot Arm 资料，保留 `stararm_rs_feedback/assets/LICENSE-Seeed.txt` 与 `stararm_rs_feedback/web/model/LICENSE-Seeed.txt`。
-- Three.js、OrbitControls、STLLoader 的 MIT 授权保留于 `stararm_rs_feedback/web/vendor/LICENSE-three.txt`。
-- Lucide SVG 图标来源于 Lucide 官方仓库，ISC / MIT 授权保留于 `stararm_rs_feedback/web/vendor/LICENSE-lucide.txt`。
-- Fashionstar 品牌标识用于 Star Arm 102 产品界面，品牌权利归相应权利人所有，不属于第三方图标库授权范围。
-- `motorbridge-smart-servo` 修复版基于 PyPI 0.0.4，上游声明 MIT，作者 tianrking。上游链接、修复差异、源码构建说明见 `sdk-fix/README.md`。随包提供源码归档与本地构建的 wheel。
-- 本项目与 VincentHSS/stararm102-force-feedback 的目标一致；本实现针对外置 LeRobot RS 插件，不使用原项目的 DM 通信控制路径。
+本项目使用以下第三方组件，并保留各组件的来源与授权信息：
 
-这些第三方授权仅覆盖各自文件；本仓库没有为其他代码额外声明开源许可证。
+| 组件 | 来源与许可 |
+| --- | --- |
+| B601-RS 展示模型（URDF、STL） | Seeed Studio reBot Arm 资料，授权见 [LICENSE-Seeed.txt](stararm_rs_damping/web/model/LICENSE-Seeed.txt)。 |
+| Three.js、OrbitControls、STLLoader | MIT 授权，见 [LICENSE-three.txt](stararm_rs_damping/web/vendor/LICENSE-three.txt)。 |
+| Lucide SVG 图标 | Lucide，ISC / MIT 授权，见 [LICENSE-lucide.txt](stararm_rs_damping/web/vendor/LICENSE-lucide.txt)。 |
+| MotorBridge Smart Servo SDK | 作者 tianrking，来源声明 MIT；源码与修改说明见 [LICENSE-NOTICE.md](vendor/motorbridge-smart-servo/LICENSE-NOTICE.md)，构建方法见 [vendor/README.md](vendor/README.md)。 |
+| Fashionstar 品牌标识 | 用于 StarArm 102 产品界面，品牌权利归相应权利人所有，说明见 [品牌声明](stararm_rs_damping/web/brand/NOTICE.txt)。 |
+
+以上授权仅覆盖对应的第三方文件。本仓库未为其余代码额外声明开源许可证。

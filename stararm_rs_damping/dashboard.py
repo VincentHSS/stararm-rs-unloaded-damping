@@ -1,4 +1,4 @@
-"""Local dashboard for this independent project; hardware opens only on Start."""
+"""StarArm local dashboard; hardware opens only on Start."""
 import argparse
 import fcntl
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -87,7 +87,7 @@ class Dashboard:
 
     def start(self, body):
         if body != {'mode': 'teleop'}:
-            raise ValueError('请选择启动遥操作')
+            raise ValueError('请选择启动跟随')
         with self.lock:
             if self.running():
                 raise ValueError('已有会话正在运行')
@@ -99,7 +99,7 @@ class Dashboard:
             state, log = self.store / (run_id + '.json'), self.store / (run_id + '.log')
             runtime = self.root / 'vendor/runtime'
             if not (runtime / 'motorbridge_smart_servo').is_dir():
-                raise ValueError('本项目私有 SDK 缺失，请先按 README 构建；无需修改原项目环境')
+                raise ValueError('项目自带 SDK 缺失，请按 vendor/README.md 构建到 vendor/runtime')
             env = dict(os.environ, PYTHONPATH=os.pathsep.join((str(runtime), str(self.root), os.environ.get('PYTHONPATH', ''))))
             with log.open('x', encoding='utf-8') as out:
                 proc = subprocess.Popen(self.build_command(state, run_id), cwd=self.root, env=env,
@@ -233,7 +233,7 @@ def main(argv=None):
         except BlockingIOError as error:
             raise RuntimeError('本项目网页已在运行') from error
         server = Server(('127.0.0.1', args.port), make_handler(app))
-        print(f'固定空载阻尼独立项目：http://127.0.0.1:{args.port}/；网页启动不连接设备', flush=True)
+        print(f'StarArm 空载阻尼工作台：http://127.0.0.1:{args.port}/；点击“启动跟随”连接设备', flush=True)
         try:
             server.serve_forever()
         except KeyboardInterrupt:
