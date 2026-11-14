@@ -115,5 +115,3 @@ node tests/test_web_model.mjs
 ```
 
 SDK 的 Rust 与伪终端测试见 [SDK 构建说明](vendor/README.md)。这些测试不连接实际机械臂，实机手感和夹持效果需要在设备上验证。
-
-第三方组件来源和许可见 [NOTICE.md](NOTICE.md)。
